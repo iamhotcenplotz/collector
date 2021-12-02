@@ -25,4 +25,3 @@ class Secret:
         return '%sads_news_db' % self
 
 
-print(Secret().ods_db())
