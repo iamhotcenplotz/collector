@@ -36,5 +36,14 @@ class JiemianItem(scrapy.Item):
     news_id = scrapy.Field()
     title = scrapy.Field()
     content_url = scrapy.Field()
+    
+    
+class EgsItem(scrapy.Item):
+    egs_id = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    pageTime = scrapy.Field()
+    content_url = scrapy.Field()
+
 
 

@@ -9,7 +9,8 @@ from scrapy.utils.project import get_project_settings
 process = CrawlerProcess(get_project_settings())
 crawl_list = ['eastmoney',
               'snowball',
-              'jiemian'
+              'jiemian',
+              'egs'
               ]
 for i in crawl_list:
     process.crawl(i)
