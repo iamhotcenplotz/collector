@@ -57,6 +57,20 @@ class Jiemian(Base):
     news_id = Column(String(50), primary_key=True, comment='distinct jiemian news id')
     title = Column(String(3000), comment='news title')
     content_url = Column(String(150), comment='news url')
+    
+    
+
+class Egs(Base):
+    # Define table name and meta
+    __tablename__ = 'ods_news_egs'
+    # metadata = MetaData()
+
+    # Define columns in table
+    egs_id = Column(String(50), primary_key=True,comment='news distinct id')
+    title = Column(String(500), comment='News title')
+    content = Column(String(12000), comment='news content')
+    content_url = Column(String(150), comment='news url')
+    pageTime = Column(String(50), comment='News show time')
 
 # from Secret import Secret
 # a = Secret().ods_db()
