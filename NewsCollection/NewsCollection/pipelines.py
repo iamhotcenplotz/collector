@@ -73,3 +73,24 @@ class JiemianPipeline:
         self.connection.commit()
         print('*' * 30, 'Jiemian Database Closed', '*' * 30)
         self.connection.close()
+        
+        
+class EgsPipeline:
+    connection = None
+    def open_spider(self, spider):
+        print('*' * 30, 'Egs Database Connected', '*' * 30)
+        self.connection = engine('ods')
+
+    def process_item(self, item, spider):
+        # time.sleep(1)
+        # print('*' * 30, 'Jiemian Database Processing', '*' * 30)
+        # print(item['title'])
+        self.connection.add(Egs(**item))
+        # print('*' * 30, 'Jiemian Database Complete Processing', '*' * 30)
+        return item
+
+    def close_spider(self, spider):
+        # print('*' * 30, 'Jiemian Data Saved', '*' * 30)
+        self.connection.commit()
+        print('*' * 30, 'Egs Database Closed', '*' * 30)
+        self.connection.close()
