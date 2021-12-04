@@ -10,7 +10,7 @@ from NewsCollection.Structures.tables import Eastmoney
 class EastmoneySpider(scrapy.Spider):
     custom_settings = {
         'DOWNLOAD_DELAY': 3,
-        # 'LOG_LEVEL': 'ERROR',
+        'LOG_LEVEL': 'ERROR',
         'ITEM_PIPELINES': {
             'NewsCollection.pipelines.EastmoneyPipeline': 300
         }
@@ -55,7 +55,7 @@ class EastmoneySpider(scrapy.Spider):
                                      callback=self.content_parse, meta={'item': item})
             else:
                 cnt += 1
-                print(i['title'], '爬过了！！！')
+                # print(i['title'], '爬过了！！！')
 
     def content_parse(self, response):
         item = response.meta['item']

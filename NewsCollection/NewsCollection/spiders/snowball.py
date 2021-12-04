@@ -14,7 +14,7 @@ class SnowballSpider(scrapy.Spider):
     start_urls = ['https://xueqiu.com/?category=livenews']
     custom_settings = {
         'DOWNLOAD_DELAY': random.randint(2, 15),
-        # 'LOG_LEVEL': 'ERROR',
+        'LOG_LEVEL': 'ERROR',
         'COOKIES_ENABLED': True,
         'COOKIES_DEBUG': True,
         'ITEM_PIPELINES': {
@@ -59,5 +59,6 @@ class SnowballSpider(scrapy.Spider):
                 item['share_count'] = i['share_count']
                 print(i['text'], '没没没没没爬过！！！！！')
                 yield item
-            else:
-                print(i['text'], '爬过了！！！！')
+            # else:
+                # print(i['text'], '爬过了！！！！')
+		#  pass 

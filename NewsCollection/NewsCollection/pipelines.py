@@ -22,7 +22,7 @@ class EastmoneyPipeline:
 
     def process_item(self, item, spider):
         # print('*' * 30, 'Eastmoney Database Processing', '*' * 30)
-        print(item['title'])
+        # print(item['title'])
         self.connection.add(Eastmoney(**item))
         return item
 

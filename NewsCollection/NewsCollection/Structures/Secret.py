@@ -2,8 +2,8 @@ class Secret:
     __secret = {
         'host': 'localhost',
         'port': '3306',
-        'user': 'username',
-        'password': 'password',
+        'user': 'newscollector',
+        'password': 'Of9vSkK%!u1xIA6t',
     }
 
     def __str__(self):
@@ -25,4 +25,3 @@ class Secret:
         return '%sads_news_db' % self
 
 
-print(Secret().ods_db())

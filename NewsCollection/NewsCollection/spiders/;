@@ -42,8 +42,8 @@ class JiemianSpider(scrapy.Spider):
                     item['content_url'] = div.xpath('./div[2]/p/a/@href').extract_first()
                     print(item['title'], '没没没没爬过！！！！')
                     yield item
-            # else:
+            else:
                 # print(''.join(div.xpath('./div[2]/p//text()').extract()).strip().replace(' ', '').replace('\n', '').replace('\t', ''), '爬过了！！！！！')
-	         # pass 
+		pass 
 
 
