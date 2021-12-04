@@ -12,6 +12,7 @@ from NewsCollection.Structures.alchemy import engine
 from NewsCollection.Structures.tables import Eastmoney
 from NewsCollection.Structures.tables import Snowball
 from NewsCollection.Structures.tables import Jiemian
+from NewsCollection.Structures.tables import Egs
 
 class EastmoneyPipeline:
     connection = None
