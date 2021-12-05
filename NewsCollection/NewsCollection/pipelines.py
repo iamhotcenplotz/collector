@@ -13,6 +13,9 @@ from NewsCollection.Structures.tables import Eastmoney
 from NewsCollection.Structures.tables import Snowball
 from NewsCollection.Structures.tables import Jiemian
 from NewsCollection.Structures.tables import Egs
+from NewsCollection.Structures.tables import Jingji
+
+
 
 class EastmoneyPipeline:
     connection = None
@@ -94,4 +97,27 @@ class EgsPipeline:
         # print('*' * 30, 'Jiemian Data Saved', '*' * 30)
         self.connection.commit()
         print('*' * 30, 'Egs Database Closed', '*' * 30)
+        self.connection.close()
+
+
+
+
+class JingjiPipeline:
+    connection = None
+    def open_spider(self, spider):
+        print('*' * 30, 'Jingji Database Connected', '*' * 30)
+        self.connection = engine('ods')
+
+    def process_item(self, item, spider):
+        # time.sleep(1)
+        # print('*' * 30, 'Jiemian Database Processing', '*' * 30)
+        # print(item['title'])
+        self.connection.add(Jingji(**item))
+        # print('*' * 30, 'Jiemian Database Complete Processing', '*' * 30)
+        return item
+
+    def close_spider(self, spider):
+        # print('*' * 30, 'Jiemian Data Saved', '*' * 30)
+        self.connection.commit()
+        print('*' * 30, 'Jingji Database Closed', '*' * 30)
         self.connection.close()

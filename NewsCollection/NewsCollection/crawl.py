@@ -10,7 +10,8 @@ process = CrawlerProcess(get_project_settings())
 crawl_list = ['eastmoney',
               'snowball',
               'jiemian',
-              'egs'
+              'egs',
+	      '21jingji'
               ]
 for i in crawl_list:
     process.crawl(i)

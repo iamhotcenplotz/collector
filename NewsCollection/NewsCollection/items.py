@@ -46,4 +46,12 @@ class EgsItem(scrapy.Item):
     content_url = scrapy.Field()
 
 
-
+class JingjiItem(scrapy.Item):
+    id = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    inputtime = scrapy.Field()
+    url = scrapy.Field()
+    tag = scrapy.Field()
+    source = scrapy.Field()
+    author = scrapy.Field()

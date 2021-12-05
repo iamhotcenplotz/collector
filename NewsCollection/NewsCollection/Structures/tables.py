@@ -72,6 +72,25 @@ class Egs(Base):
     content_url = Column(String(150), comment='news url')
     pageTime = Column(String(50), comment='News show time')
 
+
+
+class Jingji(Base):
+    # Define table name and meta
+    __tablename__ = 'ods_news_21jingji'
+    # metadata = MetaData()
+
+    # Define columns in table
+    id = Column(String(50), primary_key=True,comment='news distinct id')
+    title = Column(String(500), comment='News title')
+    content = Column(String(12000), comment='news content')
+    url = Column(String(150), comment='news url')
+    inputtime = Column(String(50), comment='News show time')
+    tag = Column(String(50), comment='News tag. sometimes None')
+    source = Column(String(50), comment='News source')
+    author = Column(String(50), comment='News author')
+
+
+
 # from Secret import Secret
 # a = Secret().ods_db()
 # engine = create_engine(a, echo=True, future=True)
