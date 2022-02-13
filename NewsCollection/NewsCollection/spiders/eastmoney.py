@@ -50,7 +50,7 @@ class EastmoneySpider(scrapy.Spider):
                     item['editor_name'] = str(None)
                 else:
                     item['editor_name'] = i['editor_name']
-                print(i['title'], '没没没没没爬过！！！！！')
+                print('~~~NO~~~',i['title'], )
                 yield scrapy.Request(i['url_unique'], headers={'Referer': 'https://finance.eastmoney.com/'},
                                      callback=self.content_parse, meta={'item': item})
             else:

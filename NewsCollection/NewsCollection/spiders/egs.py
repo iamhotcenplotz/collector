@@ -39,15 +39,15 @@ class EgsSpider(scrapy.Spider):
 
     def json_parse(self, response):
         id_list = set()
-        check = engine('ods').query(Egs.egs_id).order_by(Egs.egs_id.desc()).limit(50)
+        check = engine('ods').query(Egs.egs_id).order_by(Egs.egs_id.desc()).limit(100)
         for ids in check:
             id_list.add(ids[0])
         d = response.json()['data']
         for i in d:
             if str(i['id']) not in id_list:
-                print(i['title'], '没没没没爬过！！！！！')
+                print('~~~NO~~~',i['title'], '没没没没爬过！！！！！')
                 item = EgsItem()
-                item['egs_id'] = i['id']
+                item['egs_id'] = str(i['id'])
                 item['title'] = i['title']
                 item['content'] = i['content']
                 item['content_url'] = 'https://egs.stcn.com/' + i['url']

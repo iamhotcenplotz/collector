@@ -36,12 +36,12 @@ class A21jingjiSpider(scrapy.Spider):
 
     def json_parse(self, response):
         id_list = set()
-        check = engine('ods').query(Jingji.id).order_by(Jingji.id.desc()).limit(20)
+        check = engine('ods').query(Jingji.id).order_by(Jingji.id.desc()).limit(100)
         for ids in check:
             id_list.add(ids[0])
         for i in response.json()['list']:
             if i['id'] not in id_list:
-                print(i['title'], '没没没没没没爬过！！！！！')
+                print('~~~No~~~',i['title'], '没没没没没没爬过！！！！！')
                 item = JingjiItem()
                 item['id'] = i['id']
                 item['title'] = i['title']

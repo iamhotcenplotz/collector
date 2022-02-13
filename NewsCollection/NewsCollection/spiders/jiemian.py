@@ -27,20 +27,20 @@ class JiemianSpider(scrapy.Spider):
         yield scrapy.Request(self.start_urls[0], headers=h)
 
     def parse(self, response):
-        div_list = response.xpath('//*[@id="lists"]/div')
+        div_list = response.xpath('//*[@id="lists"]/ul/li')
         id_list = set()
         check = engine('ods').query(Jiemian.news_id).order_by(Jiemian.news_id.desc()).limit(200)
         for ids in check:
             id_list.add(ids[0])
         for div in div_list:
             item = JiemianItem()
-            if div.xpath('@data-id').extract_first() is not None:
-                if div.xpath('@data-id').extract_first() not in id_list:
-                    item['date_time'] = div.xpath('@data-time').extract_first()
-                    item['news_id'] = div.xpath('@data-id').extract_first()
-                    item['title'] = ''.join(div.xpath('./div[2]/p//text()').extract()).strip().replace(' ', '').replace('\n','').replace('\t', '').replace('\xa0','').replace('\r', '')
-                    item['content_url'] = div.xpath('./div[2]/p/a/@href').extract_first()
-                    print(item['title'], '没没没没爬过！！！！')
+            if div.xpath('./div/@data-id').extract_first() is not None:
+                if div.xpath('./div/@data-id').extract_first() not in id_list:
+                    item['date_time'] = div.xpath('./div/@data-time').extract_first()
+                    item['news_id'] = div.xpath('./div/@data-id').extract_first()
+                    item['title'] = ''.join(div.xpath('./div/div[3]/p//text()').extract()).strip().replace(' ', '').replace('\n','').replace('\t', '').replace('\xa0','').replace('\r', '')
+                    item['content_url'] = div.xpath('./div/div[3]/p/a/@href').extract_first()
+                    print('~~~No~~~',item['title'], '没没没没爬过！！！！')
                     yield item
             # else:
                 # print(''.join(div.xpath('./div[2]/p//text()').extract()).strip().replace(' ', '').replace('\n', '').replace('\t', ''), '爬过了！！！！！')

@@ -57,7 +57,7 @@ class SnowballSpider(scrapy.Spider):
                 item['status_id'] = i['status_id']
                 item['reply_count'] = i['reply_count']
                 item['share_count'] = i['share_count']
-                print(i['text'], '没没没没没爬过！！！！！')
+                print('~~~NO~~~',i['text'], '没没没没没爬过！！！！！')
                 yield item
             # else:
                 # print(i['text'], '爬过了！！！！')
