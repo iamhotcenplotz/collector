@@ -1,9 +1,14 @@
+import yaml
+
+
 class Secret:
+    with open('./secret.yaml', 'r') as f:
+        secret = yaml.load(f, Loader=yaml.FullLoader)
     __secret = {
-        'host': 'localhost',
-        'port': '3306',
-        'user': 'newscollector',
-        'password': 'Of9vSkK%!u1xIA6t',
+        'host': secret['mysql']['host'],
+        'port': secret['mysql']['port'],
+        'user': secret['mysql']['user'],
+        'password': secret['mysql']['password']
     }
 
     def __str__(self):
@@ -24,4 +29,5 @@ class Secret:
     def ads_db(self):
         return '%sads_news_db' % self
 
-
+a = Secret().ods_db()
+print(a)
